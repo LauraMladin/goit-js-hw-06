@@ -10,11 +10,11 @@ const boxes = document.querySelector("#boxes");
 
 const addHandler = () => {
   const amount = document.querySelector("#controls input[type=number]").value;
+  boxes.innerHTML = null;
   createBoxes(amount);
 };
 const removeHandler = () => {
-  const amount = document.querySelector("#controls input[type=number]").value;
-  destroyBoxes(amount);
+  boxes.innerHTML = null;
 };
 
 createButton.addEventListener("click", addHandler);
@@ -37,15 +37,3 @@ function createBoxes(amount) {
   }
 }
 
-function destroyBoxes(amount) {
-  if (amount >= 1 && amount <= 100) {
-    for (let i = 1; i <= amount; i++) {
-      const box = document.querySelector('#boxes div:last-child');
-      if (box) {
-        box.remove();
-      }
-    }
-  } else {
-    boxes.insertAdjacentHTML("beforeend", `<p>Write a number from 1 up to 100</p>`);
-  }
-}
